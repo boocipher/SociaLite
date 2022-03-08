@@ -1,0 +1,25 @@
+{
+  "name": "socialite",
+  "version": "1.0.0",
+  "description": "\"Social_network_API\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boocipher/SociaLite.git"
+  },
+  "author": "Ellie Dikova boocipher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/boocipher/SociaLite/issues"
+  },
+  "homepage": "https://github.com/boocipher/SociaLite#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "find-config": "^1.0.0",
+    "mongoose": "^6.2.4"
+  }
+}
