@@ -1,5 +1,5 @@
 // GET USERS - displays all Users
-// GET Thoughts - displays all Users
+// GET Thoughts - displays all Thoughts
 // POST users - creates user
 // PUT users - updates user
 // DELETE users - deletes
