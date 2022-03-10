@@ -1,6 +1,32 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction');
 const moment = require('moment');
+const { ObjectId } = require('bson');
+// const { timeStamp } = require('console');
+
+const reactionSchema = new Schema (
+    {
+        reactionId: {
+            type: Schema.Types.ObjectId,
+            default: new ObjectId,
+        },
+
+        reactionBody: {
+            type:String,
+            required: true,
+            maxlength: 280,
+        },
+        username: {
+            type:String,
+            required: true,
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now(),
+            get: timeStamp => moment(timeStamp).format('MMM,d,YYYY')
+        },
+    }
+)
+
 const thoughtSchema = new Schema(
     {
         thoughtText: {
@@ -19,7 +45,7 @@ const thoughtSchema = new Schema(
             type: String,
             required: true,
         },
-        // reactions: [reactionSchema]
+        reactions: [reactionSchema]
     },
     {
         toJSON: {
@@ -31,5 +57,11 @@ const thoughtSchema = new Schema(
 )
 
 const Thought = model('Thought', thoughtSchema, 'Thought');
+const Reaction = model('Reaction', reactionSchema, 'Reaction');
 
-module.exports = Thought;
+module.exports = {
+    thoughtSchema,
+    Thought,
+    reactionSchema,
+    Reaction
+};

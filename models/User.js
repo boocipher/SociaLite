@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const thoughtSchema = require('./Thought');
+const { thoughtSchema } = require('./Thought');
 
 // Schema to create Student model
 const userSchema = new Schema(
@@ -18,7 +18,7 @@ const userSchema = new Schema(
       validate: /^([a-zA-Z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
     },
     
-    assignments: [thoughtSchema],
+    thought: [thoughtSchema],
   },
   {
     toJSON: {
@@ -27,6 +27,6 @@ const userSchema = new Schema(
   }
 );
 
-const Student = model('user', userSchema);
+const User = model('user', userSchema);
 
 module.exports = User;
