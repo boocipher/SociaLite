@@ -14,6 +14,7 @@ router
     .get(getThought)
     .post(createThought)
 
+// /api/thought/:id
 router
     .route('/:id')
     .get(getSingleThought)
