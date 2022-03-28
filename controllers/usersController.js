@@ -48,5 +48,32 @@ module.exports = {
         .catch((err) => res.status(500).json(err));
     },
 
-
+    // Create a friend
+  createFriend(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.userId},
+      { $addToSet: { friends: req.params.friendId } },
+      { new: true}
+    )
+    .then((user) =>
+        !user
+          ? res.status(404).json({ message: 'No user with this id!' })
+          : res.json(user)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+  // Delete a friend
+  deleteFriend(req, res) {
+    Thought.findOneAndUpdate(
+      { id: req.params.userId },
+      { $pull: { friends: req.params.friendId } },
+      { new: true }
+    )
+    .then((user) =>
+    !user
+      ? res.status(404).json({ message: 'No user with this id!' })
+      : res.json(user)
+  )
+  .catch((err) => res.status(500).json(err));
+  }
   };
