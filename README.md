@@ -35,7 +35,9 @@ To invoke the application run
 npm run start
 ```
 <br>
-For further help on how to set up and run the application, you can also refer to the walkthrough video [here](https://drive.google.com/file/d/1cTy20CDCCrRcZ23E3zVtongOgvThAr6I/view?usp=sharing).<br>
+For further help on how to set up and run the application, you can also refer to the walkthrough video
+
+ [here](https://drive.google.com/file/d/1xinCo3aw43w5HoVeiybXDuz_yq7Ip3ez/view?usp=sharing) <br>
 <br>
 
 
