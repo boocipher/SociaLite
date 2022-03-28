@@ -3,13 +3,13 @@
 
 const router = require('express').Router();
 const {
-    addReaction,
+    createReaction,
     deleteReaction
 } = require('../../controllers/thoughtsController');
 
 router
     .route('/:thoughtId/reactions')
-    .post(addReaction)
+    .post(createReaction)
     .delete(deleteReaction)
 
 module.exports = router;

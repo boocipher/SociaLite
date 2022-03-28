@@ -62,12 +62,30 @@ module.exports = {
   },
   // Create reaction for thought
   createReaction(req, res) {
-    Reaction.create(req.body)
-      .then((reaction) => res.json(reaction))
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
+    Thought.findOneAndUpdate(
+      {_id: req.params.thoughtId},
+      { $addToSet: { reactions: req.body}},
+      {new: true}
+    )
+    .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: 'No thought with this id!' })
+          : res.json(thought)
+      )
+      .catch((err) => res.status(500).json(err));
   },
   // Delete reaction for thought
+  deleteReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { id: req.params.thoughtId },
+      { $pull: { reactions: { _id: req.body } } },
+      { new: true }
+    )
+    .then((thought) =>
+    !thought
+      ? res.status(404).json({ message: 'No thought with this id!' })
+      : res.json(thought)
+  )
+  .catch((err) => res.status(500).json(err));
+  }
 };
